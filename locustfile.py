@@ -1,18 +1,24 @@
 from locust import HttpUser, between, task
 from faker import Faker
+import mysql.connector as m
+from dotenv import load_dotenv
+import os
 
+
+load_dotenv()
 
 class WebsiteUser(HttpUser):
     wait_time = between(5, 15)
     faker = Faker()
     used_emails: list[str] = []
     used_names: list[str] = []
+    database_name: str = "book_library"
+    host_and_port: str = "localhost:3306"
+    user_db: str = os.environ.get("USER")
+    password_db: str = os.environ.get("Gabrysia1999")
 
-    # def on_start(self):
-    #     self.client.post("/login", {
-    #         "username": "test_user",
-    #         "password": ""
-    #     })
+    def on_start(self):
+
 
     @task
     def get_book_titles(self):
