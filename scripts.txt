@@ -1,2 +1,2 @@
 # script using load shape
-locust -f ./locustfiles/locustfile.py,./shapes/three_waves.py --config=locust.conf
+locust -f ./locustfiles/locustfile.py,./shapes/three_waves.py --config=locust.conf  --html report.html

@@ -25,5 +25,10 @@ class TripleRamp(LoadTestShape):
             user_count = self.min_users
 
         spawn_rate = users_count
-        return (round(user_count), round(spawn_rate))
+
+        if run_time < self.time_limit:
+            return (round(user_count), round(spawn_rate))
+        else:
+            # if return none it is end of test.
+            return None
 
