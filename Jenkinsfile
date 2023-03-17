@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Clone git') {U
+        stage('Clone git') {
             steps {
                 git branch: 'main', url: 'https://github.com/pawelgoj/load_testing_with_locust.git'
             }
