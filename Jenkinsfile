@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone git') {
             steps {
-                git 'https:\\github.com\\pawelgoj\\load_testing_with_locust.git'
+                git 'https://github.com/pawelgoj/load_testing_with_locust.git'
             }
         }
         stage('Build') {
