@@ -11,6 +11,7 @@ pipeline {
             steps {
                 bat 'C:\\Users\\pagoj\\AppData\\Local\\Programs\\Python\\Python311\\python -m pip install -r requirements.txt'
             }
+        }
         stage('Test') {
             steps {
                 bat 'locust -f .\\locustfiles\\locustfile.py,.\\shapes\\three_waves.py --config=locust.conf  --html report.html'
