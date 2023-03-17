@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Clone git') {
+        stage('Clone git') {U
             steps {
-                git 'https://github.com/pawelgoj/load_testing_with_locust.git'
+                git branch: 'main', url: 'https://github.com/pawelgoj/load_testing_with_locust.git'
             }
         }
         stage('Build') {
