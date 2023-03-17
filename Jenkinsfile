@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'locust -f .\\locustfiles\\locustfile.py,.\\shapes\\three_waves.py --config=locust.conf  --html report.html'
+                bat 'C:\\Users\\pagoj\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\locust -f .\\locustfiles\\locustfile.py,.\\shapes\\three_waves.py --config=locust.conf  --html report.html'
             }
         }
         stage('Report') {
