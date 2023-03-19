@@ -9,6 +9,8 @@ database_name: str = "book_library"
 host_db: str = "localhost"
 user_db: str = os.environ.get("USER")
 password_db: str = os.environ.get("PASSWORD")
+path_to_mysql_dump: str = os.environ.get("PATHTOMYSQLDUMP")
+path_to_mysql: str = os.environ.get("PATHTOMYSQL")
 # run script in root directory.
 dump_file: str = "data_base_backup/database_dump.sql"
 
@@ -17,7 +19,7 @@ def on_test_start(environment, **kwargs):
     logging.getLogger(__name__).setLevel("INFO")
     print("A new test is ending")
     # dump test database state before tests
-    process = subprocess.Popen(["mysqldump", f"--user={user_db}", f"--password={password_db}",
+    process = subprocess.Popen([path_to_mysql_dump, f"--user={user_db}", f"--password={password_db}",
                                 f"--host={host_db}", f"{database_name}",
                                 f"--result-file={dump_file}"])
     process.wait()
@@ -47,6 +49,6 @@ def on_test_stop(environment, **kwargs):
     mydb.close()
 
     subprocess.run(
-        f"mysql --user={user_db} --password={password_db} --host={host_db} {database_name}"
+        f"{path_to_mysql} --user={user_db} --password={password_db} --host={host_db} {database_name}"
         + f" < {dump_file}", shell=True)
     logging.info("Test is stop")

@@ -10,7 +10,8 @@ pipeline {
             steps {
                 bat 'C:\\Users\\pagoj\\AppData\\Local\\Programs\\Python\\Python311\\python -m pip install -r requirements.txt'
                 bat '@ECHO off\n' +
-                    '( ECHO USER=%NAME% & ECHO PASSWORD=%PASSWORD% ) > .env\n'
+                    '( ECHO USER=%NAME% & ECHO PASSWORD=%PASSWORD% & ECHO PATHTOMYSQLDUMP=%PATHTOMYSQLDUMP% & ECHO PATHTOMYSQL=%PATHTOMYSQL% ) > .env\n'
+
             }
         }
         stage('Test') {
@@ -20,7 +21,7 @@ pipeline {
         }
         stage('Report') {
             steps {
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
         }
     }
