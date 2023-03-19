@@ -9,6 +9,8 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'C:\\Users\\pagoj\\AppData\\Local\\Programs\\Python\\Python311\\python -m pip install -r requirements.txt'
+                bat '@ECHO off  '
+                     + '( ECHO USER=%NAME% & ECHO PASSWORD=%PASSWORD% ) > .env'
             }
         }
         stage('Test') {
